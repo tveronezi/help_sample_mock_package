@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# Check style
+cargo fmt --all -- --check
+
+# Lint it
+cargo clippy --all-targets --all-features -- -D warnings
+
+# Build it
+cargo build
+
+# Test it
+cargo test
