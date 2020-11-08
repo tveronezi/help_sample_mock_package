@@ -1,9 +1,13 @@
 mod service {
+    use rand::Rng;
     use std::fmt::Display;
 
     pub trait StuffDoer {
         fn do_stuff<T: Display>(&self, value: T) -> String {
-            format!("{}", value)
+            // imagine this function resulting in side-effects.
+            let mut rng = rand::thread_rng();
+            let random_stuff: u8 = rng.gen();
+            format!("{} {}", value, random_stuff)
         }
     }
 }
